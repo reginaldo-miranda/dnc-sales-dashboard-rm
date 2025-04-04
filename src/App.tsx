@@ -10,7 +10,7 @@ function App() {
         <Route path="/cadastro" element={<>CADASTRO</>} />
         <Route path="/home" element={<>HOME</>} />
         <Route path="/leads" element={<>LEADS</>} />
-        <Route path="/perfil" element={<>PERFIL</>} />
+        <Route path="/perfil" element={<>tPERFIL</>} />
       </Routes>
    </Router>
   )
