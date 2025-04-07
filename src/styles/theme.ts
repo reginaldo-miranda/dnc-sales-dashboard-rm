@@ -1,47 +1,47 @@
 // licao 364
 
-import { Theme } from "@types",
+import { Theme } from "@types"
 
 export const lightTheme: Theme = {
 
-    appBackground: string;
-    appColor: string;
-    appDefaultStroke: string;
-    appLogo: string;
-    appSkeletonFrom: string;
-    appSkeletonTo: string;
+    appBackground:  " ",
+    appColor:  " ",
+    appDefaultStroke:  " ",
+    appLogo:  " ",
+    appSkeletonFrom:  " ",
+    appSkeletonTo:  " ",
     buttons :{
-        alert: string
-        alertColor: string
-        alertHover: string
-        disabled:   string
-        disabledColor: string
-        primary: string
-        primaryHover: string
-        primaryColor: string
-    }
+        alert:  " ",
+        alertColor:  " ",
+        alertHover:  " ",
+        disabled:    " ",
+        disabledColor:  " ",
+        primary:  " ",
+        primaryHover:  " ",
+        primaryColor:  " ",
+    },
     card: {
-        alert: string
-        background: string;
-        border: string;
-        success: string;
-        warning: string;
-    }
+        alert:  " ",
+        background:  " ",
+        border:  " ",
+        success:  " ",
+        warning:  " ",
+    },
 
     textInput: {
-        active: string;
-        activeColor: string;
-        borderColor: string;
-        disabled: string;
-        disabledColor: string;
-        disabledBorderColor: string;
-        placeholderColor: string;
+        active:  " ",
+        activeColor:  " ",
+        borderColor:  " ",
+        disabled:  " ",
+        disabledColor:  " ",
+        disabledBorderColor:  " ",
+        placeholderColor:  " ",
 
-    }
+    },
     typographies:{
-        error: string
-        subtitle: string
-        success: string
+        error:  " ",
+        subtitle:  " ",
+        success:  " ",
 
     }
 

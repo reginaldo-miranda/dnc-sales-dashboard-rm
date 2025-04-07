@@ -41,3 +41,4 @@ export interface Theme {
     }
 
 }
+export default Theme
