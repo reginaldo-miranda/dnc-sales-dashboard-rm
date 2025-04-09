@@ -1,11 +1,11 @@
 // licao 364
-
-import { Theme } from "@types"
+import {Theme} from "@types"
+//import {Theme} from "../types/theme"
 
 export const lightTheme: Theme = {
 
-    appBackground:  " ",
-    appColor:  " ",
+    appBackground:  "#fff ",
+    appColor:  "#000",
     appDefaultStroke:  " ",
     appLogo:  " ",
     appSkeletonFrom:  " ",
