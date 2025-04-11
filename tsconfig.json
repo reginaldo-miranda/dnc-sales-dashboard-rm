@@ -2,12 +2,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-        "@/*": ["src/*"],
-      //  "@types/*": ["src/types/*"]
-    }
-    
+      "@*": ["src/*"],
+      "@types/*": ["src/@types/*"]
+    },
+    "typeRoots": ["./node_modules/@types", "./src/@types"]
   },
-  
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
