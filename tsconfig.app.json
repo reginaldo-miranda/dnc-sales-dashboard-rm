@@ -10,9 +10,7 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-     // "@types/*": ["src/types/*"]
-
+      "@*": ["src/*"]
     },
 
     /* Bundler mode */
