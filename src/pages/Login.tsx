@@ -1,19 +1,5 @@
-//import { display } from 'node_modules/@mui/system/esm/Box/Box'
-
-import styled from 'styled-components'
 import { Box, Container, Grid } from '@mui/material'
-//import Grid from '@mui/material/Grid'
-
-const LoginArea = styled.div`
-  background: #666;
-`
-
-const LoginImage = styled.div`
-  background: url(login-image.svg);
-  background-size: cover;
-  height: 100vh;
-  width: 50vw;
-`
+import { BannerImage } from '@/components'
 
 function Login() {
   return (
@@ -27,11 +13,11 @@ function Login() {
             sx={{ alignItems: 'center', display: 'flex', height: '100vh' }}
           >
             <Container maxWidth="sm">
-              <LoginArea>Login</LoginArea>
+              <h1>Login</h1>
             </Container>
           </Grid>
           <Grid item sm={6} sx={{ display: { xs: 'none ', sm: 'block' } }}>
-            <LoginImage />
+            <BannerImage />
           </Grid>
         </Grid>
       </Box>
