@@ -1,3 +1,4 @@
+import { StyledButton, StyledInput  } from "@/components";
 import { FormComponentsProps } from "@/types";
 
 function FormComponent(props: FormComponentsProps) {
@@ -5,10 +6,10 @@ function FormComponent(props: FormComponentsProps) {
     return (
         <form>
             {inputs.map((inputProps, index) => (
-                <input key={index} {...inputProps} />
+                <StyledInput key={index} {...inputProps} />
             )) }
             {buttons.map((buttonsProps, index) => (
-                <button key={index} {...buttonsProps} />
+                <StyledButton key={index} {...buttonsProps} />
             )) }
             {
                 message && (<div style={{color: message.type === 'error' ? 'red' : 'green'}}>

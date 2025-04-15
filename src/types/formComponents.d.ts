@@ -1,7 +1,7 @@
 import { HtmlHTMLAttributes } from "react";
 
 export type InputProps = React.HTMLInputTypeAttribute<HTMLInputElement>
-type ButtonProps = React.HTMLButtonElement<HtmlHTMLAttributes>
+export type ButtonProps = React.HTMLButtonElement<HtmlHTMLAttributes>
 
 export type MessageProps = {
     msg: string

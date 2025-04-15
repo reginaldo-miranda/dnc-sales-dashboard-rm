@@ -19,7 +19,7 @@ function Registration() {
                 {type: 'password' , placeholder : 'Senha'},
               ]}
                 buttons={[
-                  {classNames: 'primary', type: 'submit', children: 'Login'},
+                  {className: 'primary', type: 'submit', children: 'Login'},
                 ]}
                 message={{
                   msg: "erro !!",

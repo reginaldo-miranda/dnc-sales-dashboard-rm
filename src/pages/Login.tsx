@@ -21,7 +21,7 @@ function Login() {
                 {type: 'password' , placeholder : 'Senha'},
               ]}
                 buttons={[
-                  {classNames: 'primary', type: 'submit', children: 'Login'},
+                  {className: 'primary', type: 'submit', children: 'Login', disabled: false},
                 ]}
                 message={{
                   msg: "Sucesso !!",
