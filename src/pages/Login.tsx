@@ -1,5 +1,5 @@
 import { Box, Container, Grid } from '@mui/material'
-import { BannerImage } from '@/components'
+import { BannerImage, FormComponents } from '@/components'
 
 function Login() {
   return (
@@ -14,6 +14,12 @@ function Login() {
           >
             <Container maxWidth="sm">
               <h1>Login</h1>
+              <FormComponents inputs={[
+                {type: 'email' , placehorder : 'Email'},
+                {type: 'password' , placehorder : 'Senha'},
+              ]}>
+
+              </FormComponents>
             </Container>
           </Grid>
           <Grid item sm={6} sx={{ display: { xs: 'none ', sm: 'block' } }}>
