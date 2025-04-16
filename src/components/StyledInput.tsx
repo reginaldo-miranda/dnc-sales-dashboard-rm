@@ -16,7 +16,7 @@ export const StyledInput = styled.input<InputProps>`
   transition: background-color 0.3s;
   width: 100%;
 
-  &.disabled {
+  &:disabled {
   background-color: ${props => props.theme.textInput.disabled};
   border: ${pxToRem(1)} solid ${props => props.theme.textInput.disabledBorderColor};
   color: ${props => props.theme.textInput.disabledColor};
