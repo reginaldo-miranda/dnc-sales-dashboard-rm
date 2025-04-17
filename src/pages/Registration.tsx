@@ -1,5 +1,5 @@
 import { Box, Container, Grid } from '@mui/material'
-import { BannerImage, FormComponents, StyledH1, Styledp, StyledUl } from '@/components'
+import { BannerImage, FormComponents, Logo, StyledH1, Styledp, StyledUl } from '@/components'
 import { pxToRem } from '@/utils'
 
 function Registration() {
@@ -15,7 +15,7 @@ function Registration() {
           >
             <Container maxWidth="sm">
             <Box sx={{marginBottom: pxToRem(24)}}>
-                 LOGO
+                 <Logo height={40} width={100}/>
               </Box>
               <Box sx={{marginBottom: pxToRem(24)}}>
                  <StyledH1>Faça seu cadastro</StyledH1>

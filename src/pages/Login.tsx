@@ -16,7 +16,9 @@ function Login() {
             sx={{ alignItems: 'center', display: 'flex', height: '100vh' }}
           >
             <Container maxWidth="sm">
-              <Box sx={{marginBottom: pxToRem(24)}}><Logo height={40} width={100} /></Box>
+              <Box sx={{marginBottom: pxToRem(24)}}>
+                <Logo height={40} width={100}/>
+              </Box>
               <Box sx={{marginBottom: pxToRem(24)}}>
                  <StyledH1>Bem-Vindo</StyledH1>
                  <Styledp>Digite sua senha e para logar</Styledp>
