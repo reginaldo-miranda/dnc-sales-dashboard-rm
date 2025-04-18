@@ -1,4 +1,5 @@
 export * from './BannerImage'
+export * from './CardComponents'
 export * from './StyledButton'
 export * from './StyledInput'
 export * from './typographies'
