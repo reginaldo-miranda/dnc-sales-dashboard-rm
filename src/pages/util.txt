@@ -78,3 +78,17 @@ https://www.figma.com/design/dGf8f8KpOeChO6nQNO3fno/DNC-DASH?node-id=3-38&t=Zbbs
     "web-vitals": "^1.0.1"
   }
 }
+
+
+ "email": "regi@gmail.com",
+  "password": "DncSagui"
+
+  "name": "regi teste DNC",
+  "email": "regi@gmail.com",
+  "phone": "1997777272727",
+  "password": "DncSagui"
+
+  "ïd": 280
+
+
+    "jwt_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI4MCwiaWF0IjoxNzQ1MjU4NzI1LCJleHAiOjE3NDUyNjU5MjV9.fTZQrmA-QKR4SIVU_0xPV00e5XscAkTBedSgPNW0dWw"
