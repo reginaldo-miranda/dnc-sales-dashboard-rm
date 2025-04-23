@@ -3,8 +3,8 @@ import { useState} from 'react';
 import axios, {AxiosRequestConfig} from 'axios'
 
 const axioInstance = axios.create({
-    baseURL: `${import.meta.env.VITE_API_BASE_URL}/`
-})
+    baseURL: `${import.meta.env.VITE_API_BASE_URL}/`,
+});
 export const usePOST = <T, P>(endpoint: string) => {
     const [data, setData] = useState<T | null>(null)
     const [loading, setLoading] = useState(false) 
