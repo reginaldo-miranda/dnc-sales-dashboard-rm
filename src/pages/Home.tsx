@@ -1,5 +1,5 @@
- import { AvatarList, CardComponents, CustomChart, CustomTable, Header  } from "@/components";
-import {  Container } from "@mui/material";
+ import { AvatarList, CardComponents, CustomChart, CustomTable, Header, StyledH2  } from "@/components";
+import {  Container, Grid } from "@mui/material";
 import { currencyConverter } from '@/utils';
 
 
@@ -49,92 +49,62 @@ function Home() {
      <>
      <Header />
      <Container maxWidth="lg">
-        <CardComponents>Card</CardComponents>
-        <CardComponents>
-           <AvatarList listData ={mockListData} />
-        </CardComponents>
-        <CardComponents>
-           <CustomTable
-             headers={mockTableData.headers}
-             rows={mockTableData.rows}
-           />
-        </CardComponents>
-        <CardComponents>
-          <CustomChart labels={['jan' , 'fev', 'mar', 'abr', 'mai']} data={[1000.12, 2000.14, 930.99, 655.89, 798.34, 379.99]}
-          type='bar' />
-        </CardComponents>
-     </Container>
+        <Grid container spacing={4}>
+            <Grid item xs={12} md={4}>
+              <CardComponents>
+                 <StyledH2 className="mb-1">Total de vendas no mes</StyledH2>
+              </CardComponents>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <CardComponents>
+                 <StyledH2 className="mb-1">Meta do mes</StyledH2>
+              </CardComponents>
+            </Grid>
+
+            <Grid item xs={12} md={4}>
+              <CardComponents>
+                 <StyledH2 className="mb-1">Leads contactados</StyledH2>
+              </CardComponents>
+            </Grid>
+
+            <Grid item xs={12} md={7}>
+              <CardComponents>
+                 <StyledH2 className="mb-1">Valor de venda no mes</StyledH2>
+                 <CustomChart labels={['jan' , 'fev', 'mar', 'abr', 'mai']} data={[1000.12, 2000.14, 930.99, 655.89, 798.34, 379.99]}
+                  type='line' />
+              </CardComponents>
+            </Grid>
+
+            <Grid item xs={12} md={5}>
+              <CardComponents>
+                 <StyledH2 className="mb-1">Maiores vendedores no mes</StyledH2>
+                 <AvatarList listData ={mockListData} />
+              </CardComponents>
+            </Grid>
+
+            <Grid item xs={12} md={7}>
+              <CardComponents>
+                <StyledH2 className="mb-1">Noticias relevantes</StyledH2>
+              <CustomTable
+                 headers={mockTableData.headers}
+                 rows={mockTableData.rows}
+              />
+              </CardComponents>
+            </Grid>
+
+            <Grid item xs={12} md={5}>
+              <CardComponents>
+               <StyledH2 className="mb-1">Valor de venda por mes</StyledH2>
+                 <CustomChart labels={['jan' , 'fev', 'mar', 'abr', 'mai']} data={[1000.12, 2000.14, 930.99, 655.89, 798.34, 379.99]}
+                  type='bar' />
+              </CardComponents>
+            </Grid>
+        </Grid>
+        </Container>
      
      </>
     )
+  
   }
-
   export default Home;
   
-
-/*
-import { AvatarList, CardComponents, CustomTable, Header } from "@/components";
-import { Container } from "@mui/material";
-import { currencyConverter } from "@/utils";
-
-function Home() {
-  const mockListData = [
-    {
-      avatar: "/Avatar.svg",
-      name: "John Doe 1",
-      subtitle: currencyConverter(1234.89),
-    },
-    {
-      avatar: "/Avatar.svg",
-      name: "John Doe 2",
-      subtitle: currencyConverter(4321.98),
-    },
-    {
-      avatar: "/Avatar.svg",
-      name: "John Doe 3",
-      subtitle: currencyConverter(9876.77),
-    },
-  ];
-
-  const mockTableData = {
-    headers: ["Name", "Email", "Actions"],
-    rows: [
-      [
-        <span key="1">Nome 1</span>,
-        <span key="2">nome1@example.com</span>,
-        <button key="3">Action</button>,
-      ],
-      [
-        <span key="4">Nome 2</span>,
-        <span key="5">nome2@example.com</span>,
-        <button key="6">Action</button>,
-      ],
-      [
-        <span key="7">Nome 3</span>,
-        <span key="8">nome3@example.com</span>,
-        <button key="9">Action</button>,
-      ],
-    ],
-  };
-
-  return (
-    <>
-      <Header />
-      <Container maxWidth="lg">
-        <CardComponents>Card</CardComponents>
-        <CardComponents>
-          <AvatarList listData={mockListData} />
-        </CardComponents>
-        <CardComponents>
-          <CustomTable
-            headers={mockTableData.headers}
-            rows={mockTableData.rows}
-          />
-        </CardComponents>
-      </Container>
-    </>
-  );
-}
-
-export default Home;
-*/

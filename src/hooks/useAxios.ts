@@ -1,16 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState} from 'react';
+import { useState, useEffect } from 'react';
 import axios, {AxiosRequestConfig} from 'axios'
+import Cookies from 'js-cookie';
 
 const axioInstance = axios.create({
     baseURL: `${import.meta.env.VITE_API_BASE_URL}/`,
 });
-export const usePOST = <T, P>(endpoint: string) => {
+
+
+export const useGet = <T>(endpoint: string, config?: AxiosRequestConfig) => {
+
     const [data, setData] = useState<T | null>(null)
     const [loading, setLoading] = useState(false) 
     const [error, setError] = useState<number | null>(null)
 
-    const postData = async (postData: P, config?: AxiosRequestConfig) => {
+    const getData = async () => {
         setData(null)
         setLoading(true)
         setError(null)
@@ -18,9 +22,10 @@ export const usePOST = <T, P>(endpoint: string) => {
             try {
                 const response = await axioInstance({
                     url: endpoint,
-                    method: 'POST', 
-                    data: postData,
+                    method: 'GET', 
+                    
                     headers:{
+                        'Authorization': `Bearer ${Cookies.get('Authorization')}`,
                        'Content-Type': 'application/json', 
                         ...config?.headers  
                     },
@@ -36,7 +41,12 @@ export const usePOST = <T, P>(endpoint: string) => {
         }
     };
 
-    return { data, loading, error, postData };
+    useEffect(() => {
+        getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    return { data, loading, error, getData };
 
 
 
