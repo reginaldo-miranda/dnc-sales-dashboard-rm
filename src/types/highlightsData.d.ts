@@ -1,4 +1,4 @@
-export interface HightLightsData{
+export interface HighlightsData{
     value: number
     subtitle: string
 }
