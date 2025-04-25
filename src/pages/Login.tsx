@@ -168,8 +168,13 @@ function Login() {
       const decoded: DecodedJwt = jwtDecode(data?.jwt_token)
       Cookies.set('Authorization' , data?.jwt_token , {
         expires: jwtExpirationDateConverter(decoded.exp),
-        secure: true, 
+    // {  secure: true,} 
+        secure: window.location.protocol === 'https:'
+
       })
+      setTimeout(() => {
+        navigate('/home')
+      }, 100)
       
     }
     if(Cookies.get('Authorization')) navigate('/home');

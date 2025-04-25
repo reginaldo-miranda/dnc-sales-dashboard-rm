@@ -35,32 +35,11 @@ function Home() {
       loading: salesYearLoading,
       error: salesYearError, } = useGet<CustomChartProps>('sales/year')             
 
-  
-   const mockTableData = {
-      headers: ['Name', 'Email', 'Actions'],
-      rows: [
-         [
-            <span>Nome 1</span>,
-            <span>nome1@example.com</span>,
-            <button>Action</button>
-         ],
-         [
-            <span>Nome 2</span>,
-            <span>nome2@example.com</span>,
-            <button>Action</button>
-         ],
-         [
-            <span>Nome 3</span>,
-            <span>nome3@example.com</span>,
-            <button>Action</button>
-         ]
-      ]
-   }
 
     return (
      <>
      <Header />
-     <Container maxWidth="lg">
+     <Container className="mb-2"  maxWidth="lg">
         <Grid container spacing={4}>
             {
                !highlightsError && (
@@ -169,7 +148,7 @@ function Home() {
               )}
             </Grid>
 
-            <Grid item xs={12} md={7}>
+            <Grid item xs={12} md={5}>
               {!newsError && (
               <CardComponents className={ newsLoading ? 'skeleton-loading skeleton-loading-mh-2' : ''  }>
                {
@@ -200,11 +179,24 @@ function Home() {
             </Grid>
 
             <Grid item xs={12} md={7}>
-              <CardComponents>
-               <StyledH2 className="mb-1">Valor de venda por mes</StyledH2>
-                 <CustomChart labels={['jan' , 'fev', 'mar', 'abr', 'mai']} data={[1000.12, 2000.14, 930.99, 655.89, 798.34, 379.99]}
-                  type='bar' />
-              </CardComponents>
+            {
+                  !salesYearError && (
+                     <CardComponents className={salesYearLoading ? 'skeleton-loading skeleton-loading-mh-2' : '' } >
+                        { !salesYearLoading && salesYearData && (
+                           <>
+                           <StyledH2 className="mb-1">Valor de venda por mes</StyledH2>
+                            <CustomChart labels={salesYearData.labels.map((label) => label)}
+                             data={ salesYearData.data.map((data) => data)}
+                            type={salesYearData.type} />
+                           
+                           </>
+
+                        ) }
+                       
+                     </CardComponents>
+                  )
+               }
+
             </Grid>
         </Grid>
         </Container>
