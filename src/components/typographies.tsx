@@ -10,6 +10,7 @@ export const StyledH1 = styled.h1<TypographiesProps>  `
   font-weight: ${(props) => props.weight || 600};
   letter-spacing: ${pxToRem(-1)};
   line-height: ${(props) => pxToRem(props.lineheight || 36)};
+ 
 `
 export const StyledH2 = styled.h2<TypographiesProps>  `
   color: ${(props) => props.color || 'inherit'};
