@@ -2,7 +2,7 @@ export interface leadsPostData {
  name: string
  email: string
  phone: string
- password: string
+// password: string
  
 
 }
