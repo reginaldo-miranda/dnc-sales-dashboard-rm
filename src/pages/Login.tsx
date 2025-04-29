@@ -160,6 +160,8 @@ function Login() {
     await postData({
       email: String(formValues[0]),
       password: String(formValues[1]),
+      name: '',
+      phone: ''
     })
   }
 
