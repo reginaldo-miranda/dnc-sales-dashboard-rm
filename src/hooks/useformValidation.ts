@@ -28,7 +28,7 @@ export const useFormValidation = (inputs: InputProps[]) => {
       const newValues = [...prevValues];
       newValues[index] = value;
       return newValues;
-    })
-  }
+    });
+  };
   return { formValues, formValid, handleChange };
 }

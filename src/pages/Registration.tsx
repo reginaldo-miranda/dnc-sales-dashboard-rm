@@ -45,22 +45,26 @@ function Registration() {
     )
   }
 
-  const {
-    formValues: step1FormValues,
-    formValid: step1FormValues,
-    handleChange: step1FormHandleChange,
-  } = useFormValidation(step1Inputs)
-
+  const {formValues: step1FormValues, 
+        formValid: step1FormValid ,
+        handleChange: step1FormHandleChange,
+      } = useFormValidation(step1Inputs)
+ 
   // form step2
   const step2Inputs: InputProps[] = [{ type: 'password', placeholder: 'Senha' }]
   const handleStep2 = async (e: React.FormEvent) => {
     e.preventDefault()
   }
-  const {
-    formValues: step2FormValues,
-    formValid: step2FormValues,
+
+  const {formValues: step2FormValues, 
+    formValid: step2FormValid ,
     handleChange: step2FormHandleChange,
   } = useFormValidation(step2Inputs)
+
+
+  
+
+  const handleStepInputs = email ? step2Inputs : step1Inputs
 
   return (
     <>
@@ -77,27 +81,52 @@ function Registration() {
                 <Logo height={40} width={100} />
               </Box>
               <Box sx={{ marginBottom: pxToRem(24) }}>
-                <StyledH1>Faça seu cadastro</StyledH1>
-                <Styledp>Primeiro, diga-nos quem voce é. </Styledp>
-                <StyledUl>
-                  <li>Entre 8 e 16 caracteres;</li>
-                  <li>Pelos menos uma letra maiuscula;</li>
-                  <li>Pelos menos um caracteres especial;</li>
-                  <li>Pelos menos um número;</li>
-                </StyledUl>
+                <StyledH1>
+                  {email ? 'Defina sua senha' : 'Faca seu cadastro'}
+                </StyledH1>
+
+                <Styledp>
+                  {' '}
+                  {email
+                    ? 'Sua senha deve ter: '
+                    : 'Primeiro, diga-nos quem voce é.'}
+                </Styledp>
+                {email && (
+                  <StyledUl>
+                    <li>Entre 8 e 16 caracteres;</li>
+                    <li>Pelos menos uma letra maiuscula;</li>
+                    <li>Pelos menos um caracteres especial;</li>
+                    <li>Pelos menos um número;</li>
+                  </StyledUl>
+                )}
               </Box>
               <FormComponents
-                inputs={[
-                  { type: 'email', placeholder: 'Email' },
-                  { type: 'password', placeholder: 'Senha' },
-                ]}
+                inputs={handleStepInputs.map((input,index) => ({
+                  type:input.type,
+                  placeholder: input.placeholder,
+                  value: email
+                  ? step2FormValues[index] || ''
+                  : step1FormValues[index] || '',
+                  onChange: (e:ChangeEvent<HTMLInputElement>) =>
+                    email 
+                    ? step2FormHandleChange(
+                      index,
+                      (e.target as HTMLInputElement).value
+                    )
+                    : step1FormHandleChange(
+                      index,
+                      (e.target as HTMLInputElement).value ),
+                    
+                }))}
+             
                 buttons={[
-                  { className: 'primary', type: 'submit', children: 'Login' },
+                  { className: 'primary',
+                    disabled: email ? !step2FormValid : !step1FormValid,
+                    onClick : email ? handleStep2 : handleStep1,
+                    type: 'submit',
+                    children: email ? 'Enviar ' : 'Proximo'},
                 ]}
-                message={{
-                  msg: 'erro !!',
-                  type: 'error',
-                }}
+              
               />
             </Container>
           </Grid>
