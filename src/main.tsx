@@ -1,39 +1,21 @@
-//364
 
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import { GlobalStyle } from './styles/globalStyle.ts'
 import { AppThemeProvider } from './context/AppThemeContext.tsx'
+import { Provider } from 'react-redux'
+import store from './redux/index.ts'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
+    <Provider store={store}>
       <AppThemeProvider>
-         <GlobalStyle />
-         <App />
+        <GlobalStyle />
+        <App />
       </AppThemeProvider>
+    </Provider>
   </React.StrictMode>
 )
 
-/*
 
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { ThemeProvider } from 'styled-components'
-
-import App from './App.tsx'
-import { GlobalStyle, lightTheme } from './styles'
-
-const rootElement = document.getElementById('root')
-
-if (rootElement) {
-  createRoot(rootElement).render(
-    <StrictMode>
-      <ThemeProvider theme={lightTheme}>
-        <GlobalStyle />
-        <App />
-      </ThemeProvider>
-    </StrictMode>
-  )
-}
-*/

@@ -1,116 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/*import { ChangeEvent, useEffect } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
 
-// components
-import { Box, Container, Grid } from '@mui/material'
-import { BannerImage, FormComponents, Logo, StyledH1, Styledp } from '@/components'
-// hooks
-//import { useFormValidation, usePOST } from '@/hooks'
-import { useFormValidation, usePOST } from '@/hooks'
-
-import { MessageProps, LoginData, LoginPostData} from '@/types'
-import { pxToRem } from '@/utils'
-
-
-
-function Login() {
-
-    const inputs =[
-      {type: 'email', placeholder: 'Digite seu email'},
-      {type: 'password', placeholder: 'Digite sua senha'},
-    ]
-    const { data, loading, error, postData} = usePOST<LoginData, LoginPostData>('login')
-    const { formValues, formValid, handleChange} = useFormValidation(inputs)
-
-    const handleMessage = (): MessageProps => {
-      if (!error) return {msg: '', type: 'success'}
-      switch (error) {
-        case 401:
-          return {
-           msg: 'Email e/ou senha invalidos',
-           type: 'error'  
-          }
-          default:
-          return {
-           msg: 'Erro desconhecido, tente novamente mais tarde',
-           type: 'error'
-          }
-       
-      }
-
-    }
-    const  handleSubmit = async  (e: React.FormEvent) => {
-
-      e.preventDefault()
-       await postData({
-        email: String(formValues[0]),
-        password: String(formValues[1])
-       })
-    }
-
-    useEffect(() => {
-      if (data?.jwt_token) {
-        console.log('DATA: ', data)
-      }
-    }, [data])// Handle successful login)
-  
-
-  return (
-    <>
-      <Box>
-        <Grid container>
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            sx={{ alignItems: 'center', display: 'flex', height: '100vh' }}
-          >
-            <Container maxWidth="sm">
-              <Box sx={{marginBottom: pxToRem(24)}}>
-                <Logo height={40} width={100}/>
-              </Box>
-              <Box sx={{marginBottom: pxToRem(24)}}>
-                 <StyledH1>Bem-Vindo</StyledH1>
-                 <Styledp>Digite sua senha e para logar</Styledp>
-              </Box>
-              
-              <FormComponents
-                inputs = {inputs.map((input, index)=>({
-                 type: input.type,
-                 placeholder: input.placeholder,
-                 value: formValues[index] || '',
-                 onChange: (e: ChangeEvent<HTMLInputElement> ) => handleChange(index, (e.target as HTMLInputElement).value)
-               }))}
-              
-                buttons={[
-        
-                  {className: 'primary', 
-                    disabled: !formValid || loading,
-                    type: 'submit', 
-                    onClick: handleSubmit,
-                    children: loading ? 'Aguarde ....' : 'Login'
-                    
-                  },
-
-                ]}
-                message={handleMessage()}
-              />
-            </Container>
-          </Grid>
-          
-          <Grid item sm={6} sx={{ display: { xs: 'none', sm: 'block' } }}>
-
-            <BannerImage />
-          </Grid>
-        </Grid>
-      </Box>
-    </>
-  )
-}
-
-export default Login
-*/ // teste
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ChangeEvent, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
@@ -124,11 +13,21 @@ import { BannerImage, FormComponents, Logo, StyledH1, Styledp } from '@/componen
 // hooks
 import { useFormValidation, usePOST } from '@/hooks'
 
-import {  MessageProps, LoginData, LoginPostData, DecodedJwt } from '@/types'
+// utils
 import {  jwtExpirationDateConverter, pxToRem } from '@/utils'
+
+// types
+import {  MessageProps, LoginData, LoginPostData, DecodedJwt } from '@/types'
+
+
+// redux
+import { useSelector } from 'react-redux'
+import { RootState } from '@/redux'
 
 function Login() {
   const  navigate = useNavigate()
+
+  const { email, message } = useSelector((state: RootState) => state.createProfile)
 
   const inputs = [
     { type: 'email', placeholder: 'Digite seu email' },
@@ -139,7 +38,7 @@ function Login() {
   const { formValues, formValid, handleChange } = useFormValidation(inputs)
 
   const handleMessage = (): MessageProps => {
-    if (!error) return { msg: '', type: 'success' }
+    if (!error) return { msg: message ?? '', type: 'success' }
 
     switch (error) {
       case 401:
@@ -182,6 +81,12 @@ function Login() {
     if(Cookies.get('Authorization')) navigate('/home');
 
   }, [data, navigate])
+
+  useEffect(() => {
+    if (email) {
+      handleChange(0, email)
+      }
+  }, [email])
 
   return (
     <Box>
