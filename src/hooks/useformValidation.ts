@@ -36,4 +36,5 @@ export const useFormValidation = (inputs: InputProps[]) => {
     });
   };
   return { formValues, formValid, handleChange };
+  // teste
 }
