@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // components
 import { Box, Container, Grid } from '@mui/material'
@@ -20,14 +22,22 @@ import { useFormValidation, usePOST } from '@/hooks'
 // redux
 import { useDispatch, UseDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/redux'
-import { setProfileData } from '@/redux/slices/createProfile'
+import { setMessage, setProfileData } from '@/redux/slices/createProfile'
 
 // types
-import { InputProps } from '@/types'
+import { CreateProfileData, InputProps } from '@/types'
 
 function Registration() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const { email } = useSelector((state: RootState) => state.createProfile)
+
+  const {
+    data,
+    loading,
+    error,
+    postData,
+  } = usePOST<string, CreateProfileData>('profile/create')
 
   // form stp 1
 
@@ -54,6 +64,12 @@ function Registration() {
   const step2Inputs: InputProps[] = [{ type: 'password', placeholder: 'Senha' }]
   const handleStep2 = async (e: React.FormEvent) => {
     e.preventDefault()
+    await postData({
+      name: String(step1FormValues[0]),
+      email: String(step1FormValues[1]),
+      phone: String(step1FormValues[2]),
+      password: String(step2FormValues[0]),
+    })
   }
 
   const {formValues: step2FormValues, 
@@ -61,10 +77,18 @@ function Registration() {
     handleChange: step2FormHandleChange,
   } = useFormValidation(step2Inputs)
 
-
-  
-
   const handleStepInputs = email ? step2Inputs : step1Inputs
+
+  useEffect(() => {
+    if (data !== null) {
+      dispatch(setMessage('Usuario criado com sucesso. !')) 
+      navigate('/')
+    } else if (error) {
+      alert(
+        `Nao foi posivel realizar a operacao. Entre em contato com o suporte (${error}).`
+      )
+    }
+  }, [data, error, navigate])
 
   return (
     <>
@@ -121,7 +145,7 @@ function Registration() {
              
                 buttons={[
                   { className: 'primary',
-                    disabled: email ? !step2FormValid : !step1FormValid,
+                    disabled: email ? !step2FormValid  || loading: !step1FormValid,
                     onClick : email ? handleStep2 : handleStep1,
                     type: 'submit',
                     children: email ? 'Enviar ' : 'Proximo'},
