@@ -1,5 +1,4 @@
-//import { Theme } from '@/types'
-import { Theme } from '@/types'
+import { Theme } from '../types/theme'
 
 export const lightTheme: Theme = {
   appBackground: '#FFF',
