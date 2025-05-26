@@ -1,9 +1,7 @@
-
-
-import  { StyledH2, Styledspan} from '@/components'
-import {Avatar, Box } from '@mui/material'
-import { pxToRem } from '@/utils'
-import { AvatarsListProps } from '@/types'
+import { StyledH2, Styledspan } from './typographies'
+import { Avatar, Box } from '@mui/material'
+import { pxToRem } from '../utils'
+import { AvatarsListProps } from '../types'
 
 function AvatarList(props: AvatarsListProps) {
     return (

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { CustomTableProps } from '@/types'
-import { pxToRem } from '@/utils'
+import { CustomTableProps } from '../types'
+import { pxToRem } from '../utils'
 
 const TableWrapper = styled.div`
   
@@ -86,5 +86,4 @@ function CustomTable(props: CustomTableProps ) {
 
     
 }
-export default CustomTable 
-
+export default CustomTable
